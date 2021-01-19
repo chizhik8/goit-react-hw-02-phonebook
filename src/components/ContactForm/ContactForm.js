@@ -24,8 +24,6 @@ export class ContactForm extends Component {
         this.props.onAddContacts(name, number)
     }
 
-
-
     render() {
         return (
             <form onSubmit={this.handleSubmit}>

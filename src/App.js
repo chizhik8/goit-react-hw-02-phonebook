@@ -7,8 +7,6 @@ import { Filter } from './components/Filter/Filter';
 
 
 export class App extends Component {
-  static propTypes = {}
-  static defaultProps = {}
 
   state = {
     contacts: [
@@ -26,13 +24,13 @@ export class App extends Component {
       name,
       number
     }
+
     this.setState(prevState => { 
+      if (prevState.contacts.find(contact => contact.name === name)) { alert(`${name} is already in contacts`) };
       return {
         contacts: [...prevState.contacts, contact],
       }
     })
-
-    // alert(`${name}, is already in contacts!`);
   }
 
   addFilter = (filter) => { 

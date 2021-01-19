@@ -5,6 +5,7 @@ export default function ContactList({contacts, onRemoveContact}) {
     return (
         <div>
             <ul>
+                
                 {contacts.map(contact => (
                     <li key={contact.id}> {contact.name}: {contact.number}
                         <button
@@ -17,3 +18,5 @@ export default function ContactList({contacts, onRemoveContact}) {
         </div>
     )
 }
+
+

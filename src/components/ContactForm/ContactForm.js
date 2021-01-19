@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+
 
 export class ContactForm extends Component {
-    // static propTypes = {}
 
     state = {
         name: '',
@@ -20,7 +19,6 @@ export class ContactForm extends Component {
 
     handleSubmit = (e) => { 
         const { name, number } = this.state
-        // alert(`${name}, is already in contacts!`);
         e.preventDefault();
         this.props.onAddContacts(name, number);
         this.setState({ name: '', number: '' })

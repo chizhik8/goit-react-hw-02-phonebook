@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function ContactList({contacts, onRemoveContact}) {
-    console.log('ContactList contacts:', contacts,)
+    
     return (
         <div>
             <ul>

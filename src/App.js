@@ -40,7 +40,7 @@ export class App extends Component {
   }
 
   removeContact = (contactId) => {
-    console.log("removeContact", contactId);
+    
     this.setState(prevState => { 
       return {
         contacts: prevState.contacts.filter(contact => contact.id !== contactId)

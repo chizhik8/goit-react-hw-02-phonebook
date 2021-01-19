@@ -4,7 +4,7 @@ import { ContactForm } from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
 import { v4 as uuidv4 } from 'uuid';
 import { Filter } from './components/Filter/Filter';
-// import PropTypes from 'prop-types'
+
 
 export class App extends Component {
   static propTypes = {}
@@ -31,6 +31,8 @@ export class App extends Component {
         contacts: [...prevState.contacts, contact],
       }
     })
+
+    // alert(`${name}, is already in contacts!`);
   }
 
   addFilter = (filter) => { 
@@ -39,8 +41,14 @@ export class App extends Component {
     })
   }
 
+  taskFilter = () => {   
+    const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+
   removeContact = (contactId) => {
-    
     this.setState(prevState => { 
       return {
         contacts: prevState.contacts.filter(contact => contact.id !== contactId)
@@ -49,14 +57,17 @@ export class App extends Component {
    }
 
   render() {
-    console.log('App state:',this.state);
+
     return (
     <div>
       <h1>Phonebook</h1>
-        <ContactForm onAddContacts={this.addContacts}/>
+        <ContactForm onAddContacts={this.addContacts} />
       <h2>Contacts</h2>
-        <Filter onInputFilter={this.addFilter}/>
-        <ContactList contacts={this.state.contacts} onRemoveContact={this.removeContact} />
+        <Filter onInputFilter={this.addFilter} />
+        {this.state.filter.length > 0 ?
+          <ContactList contacts={this.taskFilter()} onRemoveContact={this.removeContact} />
+          :
+          <ContactList contacts={this.state.contacts} onRemoveContact={this.removeContact} />}
     </div>
     )
   }

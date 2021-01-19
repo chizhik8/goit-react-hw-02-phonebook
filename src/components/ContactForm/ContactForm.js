@@ -19,9 +19,11 @@ export class ContactForm extends Component {
     }
 
     handleSubmit = (e) => { 
-        const {name,number} = this.state
+        const { name, number } = this.state
+        // alert(`${name}, is already in contacts!`);
         e.preventDefault();
-        this.props.onAddContacts(name, number)
+        this.props.onAddContacts(name, number);
+        this.setState({ name: '', number: '' })
     }
 
     render() {
